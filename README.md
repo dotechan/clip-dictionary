@@ -24,3 +24,9 @@
 ## メモ
 ClipboardMangerのAPI経由でコピペしたテキストを取得できてしまうのでパスワードのようなセンシティブな情報をコピペできるようにするのはNG
 https://www.jssec.org/dl/android_securecoding/6_difficult_problems.html#%E9%9B%A3%E3%81%97%E3%81%84%E5%95%8F%E9%A1%8C
+
+### 生体認証
+https://docs.expo.dev/versions/v43.0.0/sdk/local-authentication/
+
+### クリップボード
+https://docs.expo.dev/versions/v43.0.0/sdk/clipboard/
