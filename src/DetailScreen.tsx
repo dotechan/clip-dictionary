@@ -5,6 +5,7 @@ import { useRoute } from "@react-navigation/native";
 import * as Clipboard from "expo-clipboard";
 
 import { Credential, loadByKey } from "./store";
+import { MaskedText } from "./components/MaskedText";
 
 type Props = {
   key: string;
@@ -14,6 +15,7 @@ export const DetailScreen = () => {
   const route = useRoute();
   const { storeKey } = route.params;
   const [credential, setCredential] = useState<Credential>();
+  const [isMasked, setIsMasked] = useState(true);
 
   useEffect(() => {
     const initialize = async () => {
@@ -33,6 +35,10 @@ export const DetailScreen = () => {
   const [isVisibleFailedSnackBar, setIsVisibleFailedSnackBar] = useState(false);
   const handleOpenFailedSnackBar = () => setIsVisibleFailedSnackBar(true);
   const handleDismissFailedSnackBar = () => setIsVisibleFailedSnackBar(false);
+
+  const handleClickUnmaskPassword = () => {
+    setIsMasked(false);
+  };
 
   const handleClickCopyID = () => {
     if (!credential?.accountId) {
@@ -82,10 +88,12 @@ export const DetailScreen = () => {
         </View>
         <View style={styles.textArea}>
           <Text style={styles.itemTitle}>Password</Text>
-          <Text style={styles.itemDescription}>{credential?.primaryPass}</Text>
+          <MaskedText style={styles.itemDescription} isMasked={isMasked}>
+            {credential?.primaryPass}
+          </MaskedText>
         </View>
         <View style={styles.operationIconArea}>
-          <IconButton icon="eye-outline" onPress={() => alert("masked")} />
+          <IconButton icon="eye-outline" onPress={handleClickUnmaskPassword} />
           <IconButton icon="content-copy" onPress={handleClickCopyPassword} />
         </View>
       </View>
