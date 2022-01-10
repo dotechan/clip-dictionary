@@ -30,12 +30,18 @@ export const loadByKey = async (key: string) => {
   return JSON.parse(value!!);
 };
 
+export const clearByKey = async (key: string) => {
+  try {
+    await AsyncStorage.removeItem(key);
+  } catch (e) {
+    console.log(e);
+  }
+};
+
 export const clearAsyncStorage = async () => {
   try {
     await AsyncStorage.clear();
   } catch (e) {
     console.log(e);
   }
-
-  console.log("Done");
 };

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View, FlatList } from "react-native";
 import { FAB } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
-import { loadAll, Credential, clearAsyncStorage } from "./store";
+import { loadAll, Credential } from "./store";
 import { AccounListItem } from "./components/AccountListItem";
 
 export const MainScreen = () => {
@@ -22,10 +22,6 @@ export const MainScreen = () => {
 
   const handlePressAdd = () => {
     navigation.navigate("Compose");
-  };
-
-  const handlePressClear = () => {
-    clearAsyncStorage();
   };
 
   return (

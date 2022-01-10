@@ -1,18 +1,16 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useLayoutEffect } from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { List, IconButton, Snackbar } from "react-native-paper";
-import { useRoute } from "@react-navigation/native";
+import { useRoute, useNavigation } from "@react-navigation/native";
 import * as Clipboard from "expo-clipboard";
 
 import { Credential, loadByKey } from "./store";
 import { MaskedText } from "./components/MaskedText";
-
-type Props = {
-  key: string;
-};
+import { clearByKey } from "./store";
 
 export const DetailScreen = () => {
   const route = useRoute();
+  const navigation = useNavigation();
   const { storeKey } = route.params;
   const [credential, setCredential] = useState<Credential>();
   const [isMasked, setIsMasked] = useState(true);
@@ -24,6 +22,21 @@ export const DetailScreen = () => {
     };
     initialize();
   }, [storeKey]);
+
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <IconButton
+          icon="delete"
+          onPress={() => {
+            clearByKey(storeKey);
+            navigation.navigate("Main");
+          }}
+          style={styles.headerRight}
+        />
+      ),
+    });
+  });
 
   // コピー成功時のスナックバー
   const [isVisibleSuccessSnackBar, setIsVisibleSuccessSnackBar] =
@@ -158,5 +171,8 @@ const styles = StyleSheet.create({
   },
   snackBar: {
     bottom: 30,
+  },
+  headerRight: {
+    marginRight: 20,
   },
 });

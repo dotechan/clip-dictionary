@@ -37,7 +37,9 @@ export default function App() {
           <Stack.Screen
             name="Detail"
             component={DetailScreen}
-            options={{ title: "詳細" }}
+            options={{
+              title: "詳細",
+            }}
           />
         </Stack.Navigator>
       </NavigationContainer>
