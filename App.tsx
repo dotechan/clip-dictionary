@@ -1,8 +1,8 @@
 import React, { useEffect, useReducer, useMemo } from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
 import { DefaultTheme, Provider as PaperProvider } from "react-native-paper";
 
+import { Stack } from "./src/ReactNavigationTypes";
 import { AuthContext } from "./src/context/AuthContext";
 import { LocalAuthScreen } from "./src/LocalAuthScreen";
 import { MainScreen } from "./src/MainScreen";
@@ -17,8 +17,6 @@ const theme = {
     accent: "yellow",
   },
 };
-
-const Stack = createStackNavigator();
 
 export default function App() {
   const [state, dispatch] = useReducer(
@@ -75,7 +73,7 @@ export default function App() {
     <AuthContext.Provider value={authContext}>
       <PaperProvider theme={theme}>
         <NavigationContainer>
-          <Stack.Navigator>
+          <Stack.Navigator initialRouteName="Auth">
             {state.userToken == null ? (
               <Stack.Screen
                 name="Auth"

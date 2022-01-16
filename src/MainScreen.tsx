@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View, FlatList } from "react-native";
 import { FAB } from "react-native-paper";
 import { useNavigation } from "@react-navigation/native";
+
+import { MainScreenNavigationProp } from "./ReactNavigationTypes";
 import { loadAll, Credential } from "./store";
 import { AccounListItem } from "./components/AccountListItem";
 
 export const MainScreen = () => {
-  const navigation = useNavigation();
+  const navigation = useNavigation<MainScreenNavigationProp>();
   const [credentials, setCredentials] = useState<Array<Credential>>([]);
 
   useEffect(() => {
