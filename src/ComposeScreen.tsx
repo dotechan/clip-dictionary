@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import { StyleSheet, KeyboardAvoidingView } from "react-native";
 import { TextInput, Button } from "react-native-paper";
 import { useNavigation } from "@react-navigation/core";
+
+import { ComposeScreenNavigationProp } from "./ReactNavigationTypes";
 import { Credential, save } from "./store";
 
-type TextId = "target" | "accoutId" | "primaryPass" | "secondaryPass" | "memo";
+type TextId = "target" | "accountId" | "primaryPass" | "secondaryPass" | "memo";
 
 export const ComposeScreen = () => {
   const [credential, setCredential] = useState<Credential>({
@@ -14,7 +16,7 @@ export const ComposeScreen = () => {
     secondaryPass: "",
     memo: "",
   });
-  const navigation = useNavigation();
+  const navigation = useNavigation<ComposeScreenNavigationProp>();
 
   const handleChangeText = (id: TextId, text: string) => {
     setCredential({ ...credential, [id]: text });

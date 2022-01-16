@@ -4,13 +4,17 @@ import { List, IconButton, Snackbar } from "react-native-paper";
 import { useRoute, useNavigation } from "@react-navigation/native";
 import * as Clipboard from "expo-clipboard";
 
+import {
+  DetailScreenNavigationProp,
+  DetailScreenRouteProp,
+} from "./ReactNavigationTypes";
 import { Credential, loadByKey } from "./store";
 import { MaskedText } from "./components/MaskedText";
 import { clearByKey } from "./store";
 
 export const DetailScreen = () => {
-  const route = useRoute();
-  const navigation = useNavigation();
+  const navigation = useNavigation<DetailScreenNavigationProp>();
+  const route = useRoute<DetailScreenRouteProp>();
   const { storeKey } = route.params;
   const [credential, setCredential] = useState<Credential>();
   const [isMasked, setIsMasked] = useState(true);
