@@ -11,10 +11,11 @@ import { DetailScreen } from "./src/DetailScreen";
 
 const theme = {
   ...DefaultTheme,
+  roundness: 2,
   colors: {
     ...DefaultTheme.colors,
-    primary: "tomato",
-    accent: "yellow",
+    primary: "#bfa441",
+    accent: "#415cbf",
   },
 };
 
