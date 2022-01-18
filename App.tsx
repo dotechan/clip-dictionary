@@ -74,7 +74,15 @@ export default function App() {
     <AuthContext.Provider value={authContext}>
       <PaperProvider theme={theme}>
         <NavigationContainer>
-          <Stack.Navigator initialRouteName="Auth">
+          <Stack.Navigator
+            initialRouteName="Auth"
+            screenOptions={{
+              headerStyle: {
+                backgroundColor: theme.colors.primary,
+              },
+              headerTintColor: "#000",
+            }}
+          >
             {state.userToken == null ? (
               <Stack.Screen
                 name="Auth"
