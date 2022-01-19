@@ -9,7 +9,7 @@ import { Credential, save } from "./store";
 
 type TextId = "target" | "accountId" | "primaryPass" | "secondaryPass" | "memo";
 
-export const ComposeScreen = () => {
+export const ComposeScreen: React.VFC = () => {
   const theme = useTheme();
   const [credential, setCredential] = useState<Credential>({
     target: "",

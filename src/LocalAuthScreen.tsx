@@ -7,7 +7,7 @@ import { StatusBar } from "expo-status-bar";
 
 import { AuthContext } from "./context/AuthContext";
 
-export const LocalAuthScreen = () => {
+export const LocalAuthScreen: React.VFC = () => {
   const theme = useTheme();
   const navigation = useNavigation();
   const { signIn } = React.useContext(AuthContext);

@@ -13,7 +13,7 @@ import { Credential, loadByKey } from "./store";
 import { MaskedText } from "./components/MaskedText";
 import { clearByKey } from "./store";
 
-export const DetailScreen = () => {
+export const DetailScreen: React.VFC = () => {
   const theme = useTheme();
   const navigation = useNavigation<DetailScreenNavigationProp>();
   const route = useRoute<DetailScreenRouteProp>();

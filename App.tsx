@@ -28,36 +28,46 @@ const theme = {
   },
 };
 
+type Action = {
+  type: "RESTORE_TOKEN" | "SIGN_IN" | "SIGN_OUT";
+  token?: string;
+};
+
+type Auth = {
+  isLoading: boolean;
+  isSignout: boolean;
+  userToken: string | undefined;
+};
+
+const initialState: Auth = {
+  isLoading: true,
+  isSignout: false,
+  userToken: undefined,
+};
+
 export default function App() {
-  const [state, dispatch] = useReducer(
-    (prevState, action) => {
-      switch (action.type) {
-        case "RESTORE_TOKEN":
-          return {
-            ...prevState,
-            userToken: action.token,
-            isLoading: false,
-          };
-        case "SIGN_IN":
-          return {
-            ...prevState,
-            isSignout: false,
-            userToken: action.token,
-          };
-        case "SIGN_OUT":
-          return {
-            ...prevState,
-            isSignout: true,
-            userToken: null,
-          };
-      }
-    },
-    {
-      isLoading: true,
-      isSignout: false,
-      userToken: null,
+  const [state, dispatch] = useReducer((prevState: Auth, action: Action) => {
+    switch (action.type) {
+      case "RESTORE_TOKEN":
+        return {
+          ...prevState,
+          userToken: action.token,
+          isLoading: false,
+        };
+      case "SIGN_IN":
+        return {
+          ...prevState,
+          isSignout: false,
+          userToken: action.token,
+        };
+      case "SIGN_OUT":
+        return {
+          ...prevState,
+          isSignout: true,
+          userToken: undefined,
+        };
     }
-  );
+  }, initialState);
 
   useEffect(() => {
     const bootstrapAsync = async () => {

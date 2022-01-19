@@ -8,7 +8,7 @@ import { MainScreenNavigationProp } from "./ReactNavigationTypes";
 import { loadAll, Credential } from "./store";
 import { AccounListItem } from "./components/AccountListItem";
 
-export const MainScreen = () => {
+export const MainScreen: React.VFC = () => {
   const theme = useTheme();
   const navigation = useNavigation<MainScreenNavigationProp>();
   const [credentials, setCredentials] = useState<Array<Credential>>([]);
