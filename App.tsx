@@ -9,12 +9,21 @@ import { MainScreen } from "./src/MainScreen";
 import { ComposeScreen } from "./src/ComposeScreen";
 import { DetailScreen } from "./src/DetailScreen";
 
+declare global {
+  namespace ReactNativePaper {
+    interface ThemeColors {
+      secondary: string;
+    }
+  }
+}
+
 const theme = {
   ...DefaultTheme,
   roundness: 2,
   colors: {
     ...DefaultTheme.colors,
     primary: "#bfa441",
+    secondary: "#9c7e37",
     accent: "#415cbf",
   },
 };

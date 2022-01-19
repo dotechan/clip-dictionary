@@ -1,7 +1,8 @@
 import React, { useState, useEffect, useLayoutEffect } from "react";
 import { StyleSheet, View, Text } from "react-native";
-import { List, IconButton, Snackbar } from "react-native-paper";
+import { useTheme, List, IconButton, Snackbar } from "react-native-paper";
 import { useRoute, useNavigation } from "@react-navigation/native";
+import { StatusBar } from "expo-status-bar";
 import * as Clipboard from "expo-clipboard";
 
 import {
@@ -13,6 +14,7 @@ import { MaskedText } from "./components/MaskedText";
 import { clearByKey } from "./store";
 
 export const DetailScreen = () => {
+  const theme = useTheme();
   const navigation = useNavigation<DetailScreenNavigationProp>();
   const route = useRoute<DetailScreenRouteProp>();
   const { storeKey } = route.params;
@@ -131,6 +133,7 @@ export const DetailScreen = () => {
       >
         Failed
       </Snackbar>
+      <StatusBar backgroundColor={theme.colors.secondary} />
     </View>
   );
 };
