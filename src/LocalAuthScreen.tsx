@@ -2,11 +2,13 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import * as LocalAuthentication from "expo-local-authentication";
 import { StyleSheet, View } from "react-native";
-import { Button } from "react-native-paper";
+import { useTheme, Button } from "react-native-paper";
+import { StatusBar } from "expo-status-bar";
 
 import { AuthContext } from "./context/AuthContext";
 
-export const LocalAuthScreen = () => {
+export const LocalAuthScreen: React.VFC = () => {
+  const theme = useTheme();
   const navigation = useNavigation();
   const { signIn } = React.useContext(AuthContext);
 
@@ -37,6 +39,7 @@ export const LocalAuthScreen = () => {
       >
         Authenticate
       </Button>
+      <StatusBar backgroundColor={theme.colors.secondary} />
     </View>
   );
 };

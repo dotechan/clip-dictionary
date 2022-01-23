@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { StyleSheet, KeyboardAvoidingView } from "react-native";
-import { TextInput, Button } from "react-native-paper";
+import { useTheme, TextInput, Button } from "react-native-paper";
 import { useNavigation } from "@react-navigation/core";
+import { StatusBar } from "expo-status-bar";
 
 import { ComposeScreenNavigationProp } from "./ReactNavigationTypes";
 import { Credential, save } from "./store";
 
 type TextId = "target" | "accountId" | "primaryPass" | "secondaryPass" | "memo";
 
-export const ComposeScreen = () => {
+export const ComposeScreen: React.VFC = () => {
+  const theme = useTheme();
   const [credential, setCredential] = useState<Credential>({
     target: "",
     accountId: "",
@@ -71,6 +73,7 @@ export const ComposeScreen = () => {
       <Button mode="contained" onPress={handlePressSave}>
         保存
       </Button>
+      <StatusBar backgroundColor={theme.colors.secondary} />
     </KeyboardAvoidingView>
   );
 };
