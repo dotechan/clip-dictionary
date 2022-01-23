@@ -30,3 +30,8 @@ https://docs.expo.dev/versions/v43.0.0/sdk/local-authentication/
 
 ### クリップボード
 https://docs.expo.dev/versions/v43.0.0/sdk/clipboard/
+
+### apk作成コマンド
+```
+expo build:android -t apk
+```
