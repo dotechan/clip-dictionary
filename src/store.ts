@@ -4,8 +4,6 @@ export type Credential = {
   target: string;
   accountId: string;
   primaryPass: string;
-  secondaryPass: string;
-  memo: string;
 };
 
 export const save = async (credential: Credential) => {
